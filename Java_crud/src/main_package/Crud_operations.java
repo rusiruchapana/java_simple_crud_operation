@@ -4,20 +4,39 @@ package main_package;
 import codes.DB_connect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 public class Crud_operations extends javax.swing.JFrame {
 
   
         Connection conn = null;
         PreparedStatement pst = null;
-
+        ResultSet rs = null;
     
         public Crud_operations() {
             initComponents();
             conn = DB_connect.connect();
+            data_show();
         }
 
+        public void data_show(){
+            
+            try {
+                    String sql = "select name, student_id, cource from operation";
+                    pst = conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    table_field.setModel(DbUtils.resultSetToTableModel(rs));
+                    
+                    
+            } catch (Exception e) {
+                    
+            }
+            
+            
+            
+        }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -211,8 +230,9 @@ public class Crud_operations extends javax.swing.JFrame {
                 String sql = "insert into operation (name, student_id, cource) values ('"+name+"','"+id+"','"+cource+"')";
                 pst = conn.prepareStatement(sql);
                 pst.execute();
+                data_show();
                 JOptionPane.showMessageDialog(rootPane, "Succesfully added datas" );
-                
+                   
         } catch (Exception e) {
                JOptionPane.showMessageDialog(null, e);
             
