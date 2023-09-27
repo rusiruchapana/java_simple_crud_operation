@@ -1,12 +1,17 @@
 
 package main_package;
 
+import codes.DB_connect;
+import java.sql.Connection;
 
 public class Crud_operations extends javax.swing.JFrame {
 
   
+    Connection conn = null;
+    
     public Crud_operations() {
         initComponents();
+        conn = DB_connect.connect();
     }
 
     
