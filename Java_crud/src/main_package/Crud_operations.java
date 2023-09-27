@@ -3,16 +3,20 @@ package main_package;
 
 import codes.DB_connect;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 public class Crud_operations extends javax.swing.JFrame {
 
   
-    Connection conn = null;
+        Connection conn = null;
+        PreparedStatement pst = null;
+
     
-    public Crud_operations() {
-        initComponents();
-        conn = DB_connect.connect();
-    }
+        public Crud_operations() {
+            initComponents();
+            conn = DB_connect.connect();
+        }
 
     
     @SuppressWarnings("unchecked")
@@ -53,6 +57,11 @@ public class Crud_operations extends javax.swing.JFrame {
         jLabel5.setText("Cource");
 
         add_btn.setText("Add");
+        add_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_btnActionPerformed(evt);
+            }
+        });
 
         delete_btn.setText("Delete");
 
@@ -190,6 +199,27 @@ public class Crud_operations extends javax.swing.JFrame {
     private void update_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_btnActionPerformed
        
     }//GEN-LAST:event_update_btnActionPerformed
+
+    private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
+        
+        
+        try {
+                String name = name_field.getText();
+                int id = Integer.parseInt(id_field.getText());
+                String cource = cource_field.getText();
+
+                String sql = "insert into operation (name, student_id, cource) values ('"+name+"','"+id+"','"+cource+"')";
+                pst = conn.prepareStatement(sql);
+                pst.execute();
+                JOptionPane.showMessageDialog(rootPane, "Succesfully added datas" );
+                
+        } catch (Exception e) {
+               JOptionPane.showMessageDialog(null, e);
+            
+        }
+        
+        
+    }//GEN-LAST:event_add_btnActionPerformed
 
   
     public static void main(String args[]) {
