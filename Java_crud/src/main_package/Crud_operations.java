@@ -24,7 +24,7 @@ public class Crud_operations extends javax.swing.JFrame {
         public void data_show(){
             
             try {
-                    String sql = "select name, student_id, cource from operation";
+                    String sql = "select id,name, student_id, cource from operation";
                     pst = conn.prepareStatement(sql);
                     rs = pst.executeQuery();
                     table_field.setModel(DbUtils.resultSetToTableModel(rs));
@@ -33,11 +33,26 @@ public class Crud_operations extends javax.swing.JFrame {
             } catch (Exception e) {
                     
             }
-            
-            
-            
+         
         }
     
+        public void data_fill_tofield(){
+            int row = table_field.getSelectedRow();
+            
+            String id = table_field.getValueAt(row, 0).toString();
+            String name = table_field.getValueAt(row, 1).toString();
+            String student_id = table_field.getValueAt(row, 2).toString();
+            String cource = table_field.getValueAt(row, 3).toString();
+            
+            id_indexid_field.setText(id);
+            name_field.setText(name);
+            id_field.setText(student_id);
+            cource_field.setText(cource);
+        }
+        
+        
+        
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -54,6 +69,8 @@ public class Crud_operations extends javax.swing.JFrame {
         add_btn = new javax.swing.JButton();
         delete_btn = new javax.swing.JButton();
         update_btn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        id_indexid_field = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_field = new javax.swing.JTable();
@@ -91,6 +108,10 @@ public class Crud_operations extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("ID");
+
+        id_indexid_field.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -105,21 +126,28 @@ public class Crud_operations extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(update_btn))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)))
                         .addGap(28, 28, 28)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(name_field)
                             .addComponent(id_field)
-                            .addComponent(cource_field, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cource_field, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id_indexid_field, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_indexid_field, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -137,7 +165,7 @@ public class Crud_operations extends javax.swing.JFrame {
                     .addComponent(add_btn)
                     .addComponent(delete_btn)
                     .addComponent(update_btn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         table_field.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -152,6 +180,16 @@ public class Crud_operations extends javax.swing.JFrame {
                 "No", "Name", "Student ID", "Cource"
             }
         ));
+        table_field.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_fieldMouseClicked(evt);
+            }
+        });
+        table_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                table_fieldKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(table_field);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -191,7 +229,7 @@ public class Crud_operations extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -241,6 +279,14 @@ public class Crud_operations extends javax.swing.JFrame {
         
     }//GEN-LAST:event_add_btnActionPerformed
 
+    private void table_fieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_fieldMouseClicked
+        data_fill_tofield();
+    }//GEN-LAST:event_table_fieldMouseClicked
+
+    private void table_fieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_table_fieldKeyReleased
+        data_fill_tofield();
+    }//GEN-LAST:event_table_fieldKeyReleased
+
   
     public static void main(String args[]) {
        
@@ -279,11 +325,13 @@ public class Crud_operations extends javax.swing.JFrame {
     private javax.swing.JTextField cource_field;
     private javax.swing.JButton delete_btn;
     private javax.swing.JTextField id_field;
+    private javax.swing.JLabel id_indexid_field;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
