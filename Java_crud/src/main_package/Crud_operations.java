@@ -80,10 +80,33 @@ public class Crud_operations extends javax.swing.JFrame {
             cource_field.setText("");
         }
         
+        
+        
         public void exit(){
             System.exit(0);
         }
         
+        
+        
+        
+        public void update(){
+                int check = JOptionPane.showConfirmDialog(null, "Are you sure want to update this record!.");
+                if(check== 0){
+                        try {
+                           String id1 = id_indexid_field.getText();
+                           String name = name_field.getText();
+                           String id2 = id_field.getText();
+                           String cource = cource_field.getText();
+
+                           String sql = "update operation set name ='"+name+"', student_id = '"+id2+"', cource = '"+cource+"'  where id='"+id1+"' ";
+                           pst = conn.prepareStatement(sql);
+                           pst.execute();
+
+                       } catch (Exception e) {
+                            JOptionPane.showMessageDialog(rootPane, e);
+                       }
+                }
+        }
         
         
         
@@ -146,6 +169,11 @@ public class Crud_operations extends javax.swing.JFrame {
 
         update_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         update_btn.setText("Update");
+        update_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                update_btnMouseClicked(evt);
+            }
+        });
         update_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 update_btnActionPerformed(evt);
@@ -392,6 +420,11 @@ public class Crud_operations extends javax.swing.JFrame {
     private void clear_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clear_btnMouseClicked
         clear();
     }//GEN-LAST:event_clear_btnMouseClicked
+
+    private void update_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_update_btnMouseClicked
+         update();
+         data_show();
+    }//GEN-LAST:event_update_btnMouseClicked
 
   
     public static void main(String args[]) {
