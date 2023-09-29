@@ -108,7 +108,23 @@ public class Crud_operations extends javax.swing.JFrame {
                 }
         }
         
-        
+        public void delete(){
+            int check = JOptionPane.showConfirmDialog(null, "Are you sure want to delete this record?.");
+            
+            if(check == 0){
+                try {
+                    String id1 = id_indexid_field.getText();
+                    String sql = "delete from operations where id='"+id1+"' ";
+                    pst = conn.prepareStatement(sql);
+                    pst.execute();
+                    
+                    } catch (Exception e) {
+                            JOptionPane.showMessageDialog(null, e);
+                    }           
+            }
+            
+            
+        }
         
         
         
@@ -166,6 +182,11 @@ public class Crud_operations extends javax.swing.JFrame {
 
         delete_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         delete_btn.setText("Delete");
+        delete_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delete_btnMouseClicked(evt);
+            }
+        });
 
         update_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         update_btn.setText("Update");
@@ -425,6 +446,11 @@ public class Crud_operations extends javax.swing.JFrame {
          update();
          data_show();
     }//GEN-LAST:event_update_btnMouseClicked
+
+    private void delete_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delete_btnMouseClicked
+       delete();
+         data_show();
+    }//GEN-LAST:event_delete_btnMouseClicked
 
   
     public static void main(String args[]) {
