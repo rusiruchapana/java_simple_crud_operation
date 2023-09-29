@@ -72,9 +72,17 @@ public class Crud_operations extends javax.swing.JFrame {
            
         }
         
+        public void clear(){
+            search_field.setText("");
+            id_indexid_field.setText("id");
+            name_field.setText("");
+            id_field.setText("");
+            cource_field.setText("");
+        }
         
-        
-        
+        public void exit(){
+            System.exit(0);
+        }
         
         
         
@@ -102,6 +110,8 @@ public class Crud_operations extends javax.swing.JFrame {
         id_indexid_field = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         search_field = new javax.swing.JTextField();
+        clear_btn = new javax.swing.JButton();
+        exit_btn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_field = new javax.swing.JTable();
@@ -123,6 +133,7 @@ public class Crud_operations extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Cource");
 
+        add_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         add_btn.setText("Add");
         add_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,8 +141,10 @@ public class Crud_operations extends javax.swing.JFrame {
             }
         });
 
+        delete_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         delete_btn.setText("Delete");
 
+        update_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         update_btn.setText("Update");
         update_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,36 +182,54 @@ public class Crud_operations extends javax.swing.JFrame {
                 .addGap(0, 14, Short.MAX_VALUE))
         );
 
+        clear_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        clear_btn.setText("clear");
+        clear_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clear_btnMouseClicked(evt);
+            }
+        });
+
+        exit_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        exit_btn.setText("exit");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(update_btn))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))
-                            .addGap(28, 28, 28)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(name_field)
-                                .addComponent(id_field)
-                                .addComponent(cource_field, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(74, 74, 74)
-                            .addComponent(jLabel6)
-                            .addGap(28, 28, 28)
-                            .addComponent(id_indexid_field, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(32, 32, 32)
+                                    .addComponent(update_btn))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel5)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(add_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel4)))
+                                    .addGap(28, 28, 28)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(name_field)
+                                        .addComponent(id_field)
+                                        .addComponent(cource_field, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addGap(74, 74, 74)
+                                    .addComponent(jLabel6)
+                                    .addGap(28, 28, 28)
+                                    .addComponent(id_indexid_field, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(clear_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(exit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -228,6 +259,10 @@ public class Crud_operations extends javax.swing.JFrame {
                     .addComponent(add_btn)
                     .addComponent(delete_btn)
                     .addComponent(update_btn))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clear_btn)
+                    .addComponent(exit_btn))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -354,6 +389,10 @@ public class Crud_operations extends javax.swing.JFrame {
         serach_things_show();
     }//GEN-LAST:event_search_fieldKeyReleased
 
+    private void clear_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clear_btnMouseClicked
+        clear();
+    }//GEN-LAST:event_clear_btnMouseClicked
+
   
     public static void main(String args[]) {
        
@@ -389,8 +428,10 @@ public class Crud_operations extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_btn;
+    private javax.swing.JButton clear_btn;
     private javax.swing.JTextField cource_field;
     private javax.swing.JButton delete_btn;
+    private javax.swing.JButton exit_btn;
     private javax.swing.JTextField id_field;
     private javax.swing.JLabel id_indexid_field;
     private javax.swing.JLabel jLabel1;
