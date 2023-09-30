@@ -101,16 +101,18 @@ public class Crud_operations extends javax.swing.JFrame {
         
         
         public void clear(){
-            search_field.setText("");
-            id_indexid_field.setText("id");
-            name_field.setText("");
-            id_field.setText("");
-            cource_field.setText("");
+             String id3 = id_field.getText();
+             if(id3.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Please select a row to Clear in the table!!!.");
+              }else{
+                    search_field.setText("");
+                    id_indexid_field.setText("id");
+                    name_field.setText("");
+                    id_field.setText("");
+                    cource_field.setText("");
+              }
+            
         }
-        
-        
-       
-        
         
         
         public void update(){
@@ -490,7 +492,7 @@ public class Crud_operations extends javax.swing.JFrame {
     }//GEN-LAST:event_add_btnMouseClicked
 
     private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_exit_btnActionPerformed
 
     private void exit_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_btnMouseClicked
