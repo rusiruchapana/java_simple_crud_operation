@@ -109,11 +109,7 @@ public class Crud_operations extends javax.swing.JFrame {
         }
         
         
-        
-        public void exit(){
-            System.exit(0);
-        }
-        
+       
         
         
         
@@ -286,6 +282,16 @@ public class Crud_operations extends javax.swing.JFrame {
 
         exit_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         exit_btn.setText("exit");
+        exit_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exit_btnMouseClicked(evt);
+            }
+        });
+        exit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exit_btnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -482,6 +488,14 @@ public class Crud_operations extends javax.swing.JFrame {
     private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
         add();
     }//GEN-LAST:event_add_btnMouseClicked
+
+    private void exit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_btnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exit_btnActionPerformed
+
+    private void exit_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exit_btnMouseClicked
+       System.exit(0);
+    }//GEN-LAST:event_exit_btnMouseClicked
 
   
     public static void main(String args[]) {

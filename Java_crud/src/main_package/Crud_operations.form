@@ -330,6 +330,10 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="exit"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="exit_btnMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exit_btnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
