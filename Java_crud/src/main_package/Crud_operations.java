@@ -24,7 +24,31 @@ public class Crud_operations extends javax.swing.JFrame {
         }
 
         
-        
+        public void add(){   
+            
+                String id1 = id_field.getText();
+                String sql1 = "select * from operation where id = '"+id1+"' ";
+                
+                if(sql1 == null){
+                         try {
+                        String name = name_field.getText();
+                        int id = Integer.parseInt(id_field.getText());
+                        String cource = cource_field.getText();
+
+                        String sql = "insert into operation (name, student_id, cource) values ('"+name+"','"+id+"','"+cource+"')";
+                        pst = conn.prepareStatement(sql);
+                        pst.execute();
+                        data_show();
+                        JOptionPane.showMessageDialog(rootPane, "Succesfully added datas" );
+
+                        } catch (Exception e) {
+                               JOptionPane.showMessageDialog(null, e);
+                        }     
+                }else{
+                        JOptionPane.showMessageDialog(null, "User is exist cant again add!!!.");
+                }
+                  
+        }
         
         
         public void data_show(){
@@ -114,7 +138,7 @@ public class Crud_operations extends javax.swing.JFrame {
             if(check == 0){
                 try {
                     String id1 = id_indexid_field.getText();
-                    String sql = "delete from operations where id='"+id1+"' ";
+                    String sql = "delete from operation where id='"+id1+"' ";
                     pst = conn.prepareStatement(sql);
                     pst.execute();
                     
@@ -174,6 +198,11 @@ public class Crud_operations extends javax.swing.JFrame {
 
         add_btn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         add_btn.setText("Add");
+        add_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                add_btnMouseClicked(evt);
+            }
+        });
         add_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 add_btnActionPerformed(evt);
@@ -406,24 +435,6 @@ public class Crud_operations extends javax.swing.JFrame {
 
     private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
         
-        
-        try {
-                String name = name_field.getText();
-                int id = Integer.parseInt(id_field.getText());
-                String cource = cource_field.getText();
-
-                String sql = "insert into operation (name, student_id, cource) values ('"+name+"','"+id+"','"+cource+"')";
-                pst = conn.prepareStatement(sql);
-                pst.execute();
-                data_show();
-                JOptionPane.showMessageDialog(rootPane, "Succesfully added datas" );
-                   
-        } catch (Exception e) {
-               JOptionPane.showMessageDialog(null, e);
-            
-        }
-        
-        
     }//GEN-LAST:event_add_btnActionPerformed
 
     private void table_fieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_fieldMouseClicked
@@ -451,6 +462,10 @@ public class Crud_operations extends javax.swing.JFrame {
        delete();
          data_show();
     }//GEN-LAST:event_delete_btnMouseClicked
+
+    private void add_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_add_btnMouseClicked
+        add();
+    }//GEN-LAST:event_add_btnMouseClicked
 
   
     public static void main(String args[]) {
