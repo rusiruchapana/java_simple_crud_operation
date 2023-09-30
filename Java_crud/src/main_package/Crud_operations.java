@@ -24,10 +24,10 @@ public class Crud_operations extends javax.swing.JFrame {
         }
 
         
-        public void add(){   
-            
+        public void add(){              
                 String id1 = id_field.getText();
                 String sql1 = "select * from operation where id = '"+id1+"' ";
+                
                 
                 if(sql1.isEmpty()){
                          try {
@@ -46,13 +46,12 @@ public class Crud_operations extends javax.swing.JFrame {
                         }     
                 }else{
                         JOptionPane.showMessageDialog(null, "User is exist cant again add!!!.");
-                }
-                  
+                }                  
         }
         
         
-        public void data_show(){
-            
+        
+        public void data_show(){         
             try {
                     String sql = "select id,name, student_id, cource from operation";
                     pst = conn.prepareStatement(sql);
@@ -80,6 +79,8 @@ public class Crud_operations extends javax.swing.JFrame {
             id_field.setText(student_id);
             cource_field.setText(cource);
         }
+  
+        
         
         public  void serach_things_show(){
             try {
@@ -95,6 +96,9 @@ public class Crud_operations extends javax.swing.JFrame {
             }
            
         }
+        
+        
+        
         
         public void clear(){
             search_field.setText("");
@@ -114,6 +118,10 @@ public class Crud_operations extends javax.swing.JFrame {
         
         
         public void update(){
+                String id3 = id_field.getText();
+                if(id3.isEmpty()){
+                        JOptionPane.showMessageDialog(null, "Please select a row to update in the table!!!.");
+                }
                 int check = JOptionPane.showConfirmDialog(null, "Are you sure want to update this record!.");
                 if(check== 0){
                         try {
@@ -131,6 +139,8 @@ public class Crud_operations extends javax.swing.JFrame {
                        }
                 }
         }
+        
+        
         
         public void delete(){
             String id2 = id_field.getText();
