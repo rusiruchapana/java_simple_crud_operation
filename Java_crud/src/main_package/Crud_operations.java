@@ -29,7 +29,7 @@ public class Crud_operations extends javax.swing.JFrame {
                 String id1 = id_field.getText();
                 String sql1 = "select * from operation where id = '"+id1+"' ";
                 
-                if(sql1 == null){
+                if(sql1.isEmpty()){
                          try {
                         String name = name_field.getText();
                         int id = Integer.parseInt(id_field.getText());
@@ -133,20 +133,26 @@ public class Crud_operations extends javax.swing.JFrame {
         }
         
         public void delete(){
-            int check = JOptionPane.showConfirmDialog(null, "Are you sure want to delete this record?.");
-            
-            if(check == 0){
-                try {
-                    String id1 = id_indexid_field.getText();
-                    String sql = "delete from operation where id='"+id1+"' ";
-                    pst = conn.prepareStatement(sql);
-                    pst.execute();
-                    
-                    } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, e);
-                    }           
-            }
-            
+            String id2 = id_field.getText();
+            if(id2.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Please select a row to delete in the table!!!.");
+            }else{
+                    int check = JOptionPane.showConfirmDialog(null, "Are you sure want to delete this record?.");
+
+                    if(check == 0){
+                        try {
+                            String id1 = id_indexid_field.getText();
+                            String sql = "delete from operation where id='"+id1+"' ";
+                            pst = conn.prepareStatement(sql);
+                            pst.execute();
+
+                            } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(null, e);
+                            }           
+                     }
+
+                }
+
             
         }
         
