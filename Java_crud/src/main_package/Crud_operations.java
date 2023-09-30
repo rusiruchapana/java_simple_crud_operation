@@ -121,25 +121,25 @@ public class Crud_operations extends javax.swing.JFrame {
                 String id3 = id_field.getText();
                 if(id3.isEmpty()){
                         JOptionPane.showMessageDialog(null, "Please select a row to update in the table!!!.");
-                }
-                int check = JOptionPane.showConfirmDialog(null, "Are you sure want to update this record!.");
-                if(check== 0){
-                        try {
-                           String id1 = id_indexid_field.getText();
-                           String name = name_field.getText();
-                           String id2 = id_field.getText();
-                           String cource = cource_field.getText();
+                }else{
+                         int check = JOptionPane.showConfirmDialog(null, "Are you sure want to update this record!.");
+                        if(check== 0){
+                                    try {
+                                       String id1 = id_indexid_field.getText();
+                                       String name = name_field.getText();
+                                       String id2 = id_field.getText();
+                                       String cource = cource_field.getText();
 
-                           String sql = "update operation set name ='"+name+"', student_id = '"+id2+"', cource = '"+cource+"'  where id='"+id1+"' ";
-                           pst = conn.prepareStatement(sql);
-                           pst.execute();
+                                       String sql = "update operation set name ='"+name+"', student_id = '"+id2+"', cource = '"+cource+"'  where id='"+id1+"' ";
+                                       pst = conn.prepareStatement(sql);
+                                       pst.execute();
 
-                       } catch (Exception e) {
-                            JOptionPane.showMessageDialog(rootPane, e);
-                       }
-                }
+                                   } catch (Exception e) {
+                                        JOptionPane.showMessageDialog(rootPane, e);
+                                   }
+                            }
+                        }
         }
-        
         
         
         public void delete(){
