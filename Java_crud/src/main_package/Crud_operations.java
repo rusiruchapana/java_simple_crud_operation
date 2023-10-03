@@ -25,11 +25,10 @@ public class Crud_operations extends javax.swing.JFrame {
 
         
         public void add(){              
-                String id1 = id_field.getText();
-                String sql1 = "select * from operation where id = '"+id1+"' ";
+               
                 
                 
-                if(sql1.isEmpty()){
+                
                          try {
                         String name = name_field.getText();
                         int id = Integer.parseInt(id_field.getText());
@@ -44,9 +43,7 @@ public class Crud_operations extends javax.swing.JFrame {
                         } catch (Exception e) {
                                JOptionPane.showMessageDialog(null, e);
                         }     
-                }else{
-                        JOptionPane.showMessageDialog(null, "User is exist cant again add!!!.");
-                }                  
+                                
         }
         
         
